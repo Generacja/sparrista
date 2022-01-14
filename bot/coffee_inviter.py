@@ -1,10 +1,27 @@
 import requests
 import random
 import os
+import time
 
+from dotenv import load_dotenv
 from requests.exceptions import HTTPError
 
-GET_POST_COFFEE_SURVEYS = 'https://mocki.io/v1/22f4c0d0-332f-41d5-93e6-2d0ebd061293'
+load_dotenv()
+
+GET_POST_COFFEE_SURVEYS = os.getenv('GET_POST_COFFEE_SURVEYS')
+POST_INVITE_EMPLOYEES = os.getenv('POST_INVITE_EMPLOYEES')
+
+
+class Employee:
+    """a class that represents an employee"""
+
+    def __init__(self, employee):
+        self.nick = employee['employee']['nickName']
+        self.grade = employee['grade']
+        self.total_surveys = employee['numberOfSurveys']
+
+    def __str__(self):
+        return f'{self.nick}: {self.grade}/{self.total_surveys}'
 
 
 def invite_users():
@@ -28,8 +45,19 @@ def invite_users():
         sad_employee_idx = random.randrange(0, len(sad_employees))
         happy_employee_idx = random.randrange(0, len(happy_employees))
 
-        print(sad_employees[sad_employee_idx])
-        print(happy_employees[happy_employee_idx])
+        sad_employee = sad_employees[sad_employee_idx]
+        happy_employee = happy_employees[happy_employee_idx]
+
+        sad_employee = Employee(sad_employee)
+        happy_employee = Employee(happy_employee)
+
+        message = f'Hej {sad_employee.nick}!\nNie masz ochoty na odpoczynek?... 😊\nZrób sobie przerwę i wypij aromatyczną kawę z {happy_employee.nick}☕\nChwila przerwy dobrze wam zrobi!👌'
+
+        payload = {'content': message}
+        requests.post(POST_INVITE_EMPLOYEES, data=payload)
+
+        print(
+            f'{time.ctime()}: Zaproszeni na kawe zostali {sad_employee} oraz {happy_employee}')
 
 
 invite_users()
