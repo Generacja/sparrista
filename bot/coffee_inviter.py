@@ -53,11 +53,14 @@ def invite_users():
 
         message = f'Hej {sad_employee.nick}!\nNie masz ochoty na odpoczynek?... 😊\nZrób sobie przerwę i wypij aromatyczną kawę z {happy_employee.nick}☕\nChwila przerwy dobrze wam zrobi!👌'
 
-        payload = {'content': message}
-        requests.post(POST_INVITE_EMPLOYEES, data=payload)
-
-        print(
-            f'{time.ctime()}: Zaproszeni na kawe zostali {sad_employee} oraz {happy_employee}')
+        try:
+            payload = {'content': message}
+            res = requests.post(POST_INVITE_EMPLOYEES, data=payload)
+            res.raise_for_status()
+            print(
+                f'{time.ctime()}: Zaproszeni na kawe zostali {sad_employee} oraz {happy_employee}')
+        except Exception as err:
+            print(f'An error occurred: {err}')
 
 
 invite_users()
