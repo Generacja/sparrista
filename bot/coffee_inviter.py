@@ -2,6 +2,8 @@ import requests
 import random
 import os
 import time
+import schedule
+
 
 from dotenv import load_dotenv
 from requests.exceptions import HTTPError
@@ -24,8 +26,8 @@ class Employee:
         return f'{self.nick}: {self.grade}/{self.total_surveys}'
 
 
-def invite_users():
-    """logic responsible for inviting users for a coffee"""
+def invite_employees():
+    """logic responsible for inviting employees for a coffee"""
     try:
         res = requests.get(GET_POST_COFFEE_SURVEYS)
         res.raise_for_status()
@@ -63,4 +65,8 @@ def invite_users():
             print(f'An error occurred: {err}')
 
 
-invite_users()
+schedule.every(1).minutes.do(invite_employees)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
