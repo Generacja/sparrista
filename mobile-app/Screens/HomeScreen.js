@@ -28,7 +28,7 @@ import {
     emp17,
     guest,
 } from "../employees";
-import { clearStorage, getEmpBefore } from "../asyncStorage";
+import { clearStorage, getEmpBefore, getEmpAfter } from "../asyncStorage";
 import { useEffect, useState } from "react";
 import AppLoading from "expo-app-loading";
 
@@ -68,16 +68,20 @@ export function HomeScreen({ navigation }) {
     }, []);
 
     const onEmployeePressed = async (employee) => {
-        if (employee.id === 1) {
-            clearStorage();
-        }
+        const before = await getEmpBefore(employee.id);
 
-        const item = await getEmpBefore(employee.id);
+        if (before === "x") {
+            const after = await getEmpAfter(employee.id);
 
-        if (item !== null) {
-            navigation.navigate("UserMainInterface", {
-                user: employee,
-            });
+            if (after === "x") {
+                navigation.navigate("AfterCoffeeScreen", {
+                    user: employee,
+                });
+            } else {
+                navigation.navigate("UserMainInterface", {
+                    user: employee,
+                });
+            }
         } else {
             navigation.navigate("BeforeCoffeeScreen", {
                 user: employee,

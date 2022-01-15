@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import { ImageBackground, View, Text, Image, Pressable } from "react-native";
 import { styles } from "../Styles/Styles.js";
-import { setEmpBefore, getEmpBefore } from "../asyncStorage";
+import { setEmpBefore } from "../asyncStorage";
 
 export function BeforeCoffeeScreen({ navigation, route }) {
     const [bitterness, setBitterness] = React.useState("");
@@ -11,7 +11,7 @@ export function BeforeCoffeeScreen({ navigation, route }) {
 
     useEffect(async () => {
         if (bitterness !== "" && acidity !== "" && intensity !== "") {
-            setEmpBefore(currentUser.id);
+            setEmpBefore(currentUser.id, "x");
             navigation.navigate("UserMainInterface", { user: currentUser });
         }
     }, [bitterness, acidity, intensity]);
