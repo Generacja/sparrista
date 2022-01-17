@@ -6,14 +6,14 @@ import {
     Text,
     Image,
 } from "react-native";
-import {styles} from "../Styles/Styles.js";
+import { styles } from "../Styles/Styles.js";
 import AppLoading from "expo-app-loading";
-import {coff1, coff2, coff3} from "../coffees";
+import { coff1, coff2, coff3, coff4, coff5 } from "../coffees";
 
-export function UserMainInterface({navigation, route}) {
+export function UserMainInterface({ navigation, route }) {
     const currentUser = route.params.user;
 
-    if (typeof currentUser == "undefined") return <AppLoading/>;
+    if (typeof currentUser == "undefined") return <AppLoading />;
     return (
         <View style={styles.container}>
             <ImageBackground
@@ -21,7 +21,7 @@ export function UserMainInterface({navigation, route}) {
                 resizeMode={"stretch"}
                 style={styles.image}
             >
-                <View style={{flex: 0.9}}>
+                <View style={{ flex: 0.9 }}>
                     <View
                         style={{
                             flexDirection: "row",
@@ -29,13 +29,20 @@ export function UserMainInterface({navigation, route}) {
                             padding: 40,
                         }}
                     >
-                        <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate("HomeScreen")}
+                        >
                             <Image
-                                style={{height: 52, width: 90, marginTop: 20}}
+                                style={{ height: 52, width: 90, marginTop: 20 }}
                                 source={require("../assets/BackArrow.png")}
                             />
                         </TouchableOpacity>
-                        <View style={{flexDirection: "column", alignItems: "center"}}>
+                        <View
+                            style={{
+                                flexDirection: "column",
+                                alignItems: "center",
+                            }}
+                        >
                             <Image
                                 style={{
                                     height: 80,
@@ -44,7 +51,7 @@ export function UserMainInterface({navigation, route}) {
                                     borderTopLeftRadius: 5,
                                     borderTopRightRadius: 5,
                                 }}
-                                source={{uri: currentUser["avatarUrl"]}}
+                                source={{ uri: currentUser["avatarUrl"] }}
                             />
                             <View
                                 style={{
@@ -55,7 +62,7 @@ export function UserMainInterface({navigation, route}) {
                                     borderBottomRightRadius: 5,
                                 }}
                             />
-                            <Text style={{fontWeight: "bold", fontSize: 19}}>
+                            <Text style={{ fontWeight: "bold", fontSize: 19 }}>
                                 {currentUser["nickName"]}
                             </Text>
                         </View>
@@ -71,22 +78,34 @@ export function UserMainInterface({navigation, route}) {
                 >
                     <TouchableOpacity
                         onPress={() =>
-                            navigation.navigate("CoffeeChoiceScreen", {user: currentUser})
+                            navigation.navigate("CoffeeChoiceScreen", {
+                                user: currentUser,
+                            })
                         }
                     >
                         <ImageBackground
                             source={require("../assets/NewCoffee.png")}
                             style={styles.interfaceIcons}
                         >
-                            <Text style={styles.interfaceIconsText}>NOWA KAWA</Text>
+                            <Text style={styles.interfaceIconsText}>
+                                NOWA KAWA
+                            </Text>
                         </ImageBackground>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() =>
+                            navigation.navigate("RankingScreen", {
+                                user: currentUser,
+                            })
+                        }
+                    >
                         <ImageBackground
                             source={require("../assets/Ranking.png")}
                             style={styles.interfaceIcons}
                         >
-                            <Text style={styles.interfaceIconsText}>RANKING</Text>
+                            <Text style={styles.interfaceIconsText}>
+                                RANKING
+                            </Text>
                         </ImageBackground>
                     </TouchableOpacity>
                     <TouchableOpacity>
@@ -94,7 +113,9 @@ export function UserMainInterface({navigation, route}) {
                             source={require("../assets/Friends.png")}
                             style={styles.interfaceIcons}
                         >
-                            <Text style={styles.interfaceIconsText}>ZNAJOMI</Text>
+                            <Text style={styles.interfaceIconsText}>
+                                ZNAJOMI
+                            </Text>
                         </ImageBackground>
                     </TouchableOpacity>
                     <TouchableOpacity>
@@ -109,7 +130,9 @@ export function UserMainInterface({navigation, route}) {
                                 alignItems: "center",
                             }}
                         >
-                            <Text style={styles.interfaceIconsText}>STATYSTYKI</Text>
+                            <Text style={styles.interfaceIconsText}>
+                                STATYSTYKI
+                            </Text>
                         </ImageBackground>
                     </TouchableOpacity>
                 </View>
@@ -140,75 +163,116 @@ export function UserMainInterface({navigation, route}) {
                         >
                             POLECANE
                         </Text>
-                        <View style={{flexDirection: "row"}}>
-                            <TouchableOpacity onPress={() =>
-                                navigation.navigate("CoffeeRecipeScreen", {
-                                    user: currentUser,
-                                    coffee: coff2,
-                                })
-                            } style={{flexDirection: "column"}}>
-                                <ImageBackground style={styles.polecaneSquare}
-                                                 source={require("../assets/ForYou.png")}/>
+                        <View style={{ flexDirection: "row" }}>
+                            <TouchableOpacity
+                                onPress={() =>
+                                    navigation.navigate("CoffeeRecipeScreen", {
+                                        user: currentUser,
+                                        coffee:
+                                            currentUser.id % 2 == 0
+                                                ? coff1
+                                                : coff2,
+                                    })
+                                }
+                                style={{ flexDirection: "column" }}
+                            >
+                                <ImageBackground
+                                    style={styles.polecaneSquare}
+                                    source={require("../assets/ForYou.png")}
+                                />
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() =>
-                                navigation.navigate("CoffeeRecipeScreen", {
-                                    user: currentUser,
-                                    coffee: coff1,
-                                })
-                            } style={{flexDirection: "column"}}>
-                                <ImageBackground style={[styles.polecaneSquare, {width: 220}]}
-                                                 source={require("../assets/MostCommon.png")}/>
+                            <TouchableOpacity
+                                onPress={() =>
+                                    navigation.navigate("CoffeeRecipeScreen", {
+                                        user: currentUser,
+                                        coffee: coff3,
+                                    })
+                                }
+                                style={{ flexDirection: "column" }}
+                            >
+                                <ImageBackground
+                                    style={[
+                                        styles.polecaneSquare,
+                                        { width: 220 },
+                                    ]}
+                                    source={require("../assets/MostCommon.png")}
+                                />
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() =>
-                                navigation.navigate("CoffeeRecipeScreen", {
-                                    user: currentUser,
-                                    coffee: coff3,
-                                })
-                            } style={{flexDirection: "column"}}>
-                                <ImageBackground style={[styles.polecaneSquare, {width: 220}]}
-                                                 source={require("../assets/BestRated.png")}/>
+                            <TouchableOpacity
+                                onPress={() =>
+                                    navigation.navigate("CoffeeRecipeScreen", {
+                                        user: currentUser,
+                                        coffee: coff4,
+                                    })
+                                }
+                                style={{ flexDirection: "column" }}
+                            >
+                                <ImageBackground
+                                    style={[
+                                        styles.polecaneSquare,
+                                        { width: 220 },
+                                    ]}
+                                    source={require("../assets/BestRated.png")}
+                                />
                             </TouchableOpacity>
                         </View>
                     </ImageBackground>
-                    <View style={{flexDirection: "column"}}>
-                        <View
-                            source={require("../assets/next_week.png")}
-                            style={{
-                                height: 260,
-                                width: 220,
-                                backgroundColor: "#9F6F4C",
-                                borderTopLeftRadius: 20,
-                                borderTopRightRadius: 20,
-                                alignItems: "center",
-                                justifyContent: "center"
-                            }}
+                    <View style={{ flexDirection: "column" }}>
+                        <TouchableOpacity
+                            onPress={() =>
+                                navigation.navigate("CoffeeRecipeScreen", {
+                                    user: currentUser,
+                                    coffee: coff5,
+                                })
+                            }
                         >
-                            <Image source={require("../assets/next_week.png")}
-                                   style={{width: 130, height: 200, resizeMode: "contain"}}/>
-                        </View>
-                        <View
-                            style={{
-                                height: 30,
-                                width: 220,
-                                backgroundColor: "#212121",
-                                borderBottomLeftRadius: 20,
-                                borderBottomRightRadius: 20,
-                            }}>
-                            <Text
+                            <View
+                                source={require("../assets/next_week.png")}
                                 style={{
-                                    fontFamily: "Karla_400Regular",
-                                    color: "white",
-                                    fontSize: 24,
-                                    textAlign: "center",
-                                    fontWeight: "bold",
-                                    marginTop: -5
-                                }}>
-                                ZA TYDZIEŃ
-                            </Text>
-                        </View>
+                                    height: 260,
+                                    width: 220,
+                                    backgroundColor: "#9F6F4C",
+                                    borderTopLeftRadius: 20,
+                                    borderTopRightRadius: 20,
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <Image
+                                    source={require("../assets/next_week.png")}
+                                    style={{
+                                        width: 130,
+                                        height: 200,
+                                        resizeMode: "contain",
+                                    }}
+                                />
+                            </View>
+                            <View
+                                style={{
+                                    height: 30,
+                                    width: 220,
+                                    backgroundColor: "#212121",
+                                    borderBottomLeftRadius: 20,
+                                    borderBottomRightRadius: 20,
+                                }}
+                            >
+                                <Text
+                                    style={{
+                                        fontFamily: "Karla_400Regular",
+                                        color: "white",
+                                        fontSize: 24,
+                                        textAlign: "center",
+                                        fontWeight: "bold",
+                                        marginTop: -5,
+                                    }}
+                                >
+                                    ZA TYDZIEŃ
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
                     </View>
                 </View>
-                <View style={{flex: 1}}/>
+                <View style={{ flex: 1 }} />
             </ImageBackground>
         </View>
     );
