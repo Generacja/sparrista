@@ -7,6 +7,7 @@ import { AfterCoffeeScreen } from "./Screens/AfterCoffeeScreen";
 import { CoffeeChoiceScreen } from "./Screens/CoffeeChoiceScreen";
 import { CoffeeRecipeScreen } from "./Screens/CoffeeRecipeScreen";
 import { BeforeCoffeeScreen } from "./Screens/BeforeCoffeeScreen";
+import { RankingScreen } from "./Screens/RankingScreen";
 import AppLoading from "expo-app-loading";
 import { useFonts, Karla_400Regular } from "@expo-google-fonts/karla";
 
@@ -43,6 +44,10 @@ function App() {
                     <Stack.Screen
                         name="AfterCoffeeScreen"
                         component={AfterCoffeeScreen}
+                    />
+                    <Stack.Screen
+                        name="RankingScreen"
+                        component={RankingScreen}
                     />
                 </Stack.Navigator>
             </NavigationContainer>
