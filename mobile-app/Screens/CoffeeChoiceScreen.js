@@ -8,9 +8,40 @@ import {
 } from "react-native";
 import { coff1, coff2, coff3, coff4, coff5 } from "../coffees";
 import AppLoading from "expo-app-loading";
+import {useEffect, useState} from "react";
+import {API_URL} from "@env";
+
+import axios from "axios";
 
 export function CoffeeChoiceScreen({ navigation, route }) {
     const currentUser = route.params.user;
+
+    const [americano, setAmericano] = useState(coff1);
+    const [espresso, setEspresso] = useState(coff2);
+    const [flatWhite, setFlatWhite] = useState(coff3);
+    const [cappuccino, setCappuccino] = useState(coff4);
+    const [caffeLatte, setCaffeLatte] = useState(coff5);
+
+    useEffect(() => {
+        axios.get(API_URL + "/coffees")
+            .then((res) => {
+
+                res.data.map((coffee) => {
+                    switch(coffee.title) {
+                        case "Americano": setAmericano(coffee); break;
+                        case "Espresso": setEspresso(coffee); break;
+                        case "Flat White": setFlatWhite(coffee); break;
+                        case "Cappuccino": setCappuccino(coffee); break;
+                        case "Caffe Latte": setCaffeLatte(coffee); break;
+                    }
+                })
+
+                // console.log(res.data);
+            }).catch((e) => {
+            console.log(e);
+        })
+
+    }, []);
 
     if (typeof currentUser == "undefined") return <AppLoading />;
     return (
@@ -53,7 +84,7 @@ export function CoffeeChoiceScreen({ navigation, route }) {
                                 onPress={() =>
                                     navigation.navigate("CoffeeRecipeScreen", {
                                         user: currentUser,
-                                        coffee: coff1,
+                                        coffee: americano,
                                     })
                                 }
                             >
@@ -72,7 +103,7 @@ export function CoffeeChoiceScreen({ navigation, route }) {
                                 onPress={() =>
                                     navigation.navigate("CoffeeRecipeScreen", {
                                         user: currentUser,
-                                        coffee: coff2,
+                                        coffee: espresso,
                                     })
                                 }
                             >
@@ -91,7 +122,7 @@ export function CoffeeChoiceScreen({ navigation, route }) {
                                 onPress={() =>
                                     navigation.navigate("CoffeeRecipeScreen", {
                                         user: currentUser,
-                                        coffee: coff3,
+                                        coffee: flatWhite,
                                     })
                                 }
                             >
@@ -110,7 +141,7 @@ export function CoffeeChoiceScreen({ navigation, route }) {
                                 onPress={() =>
                                     navigation.navigate("CoffeeRecipeScreen", {
                                         user: currentUser,
-                                        coffee: coff4,
+                                        coffee: cappuccino,
                                     })
                                 }
                             >
@@ -129,7 +160,7 @@ export function CoffeeChoiceScreen({ navigation, route }) {
                                 onPress={() =>
                                     navigation.navigate("CoffeeRecipeScreen", {
                                         user: currentUser,
-                                        coffee: coff5,
+                                        coffee: caffeLatte,
                                     })
                                 }
                             >

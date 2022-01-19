@@ -6,6 +6,7 @@ import {
     Text,
     Image,
 } from "react-native";
+import {API_URL} from "@env";
 import axios from "axios";
 import { styles } from "../Styles/Styles.js";
 import {
@@ -28,47 +29,54 @@ import {
     emp17,
     guest,
 } from "../employees";
-import { clearStorage, getEmpBefore, getEmpAfter } from "../asyncStorage";
+import { getEmpBefore, getEmpAfter } from "../asyncStorage";
 import { useEffect, useState } from "react";
 import AppLoading from "expo-app-loading";
 
 export function HomeScreen({ navigation }) {
     const [employees, setEmployees] = useState();
-    const doUWantDatabase = false; // ustaw na false i nie potrzebujesz bazy do dzialania apki
 
     useEffect(() => {
-        if (doUWantDatabase) {
-            axios
-                .get("http://192.168.1.28:8080/api/v1/employees") //wpisz swoje wewnetrzne ip(nie moze byc localhost!)
+            axios.get(API_URL + "/employees")
                 .then((res) => {
-                    setEmployees(res.data);
-                });
-        } else {
-            setEmployees([
-                emp1,
-                emp2,
-                emp3,
-                emp4,
-                emp5,
-                emp6,
-                emp7,
-                emp8,
-                emp9,
-                emp10,
-                emp11,
-                emp12,
-                emp13,
-                emp14,
-                emp15,
-                emp16,
-                emp17,
-                guest,
-            ]);
-        }
+                    const newEmployees = res.data;
+                    newEmployees.push(guest);
+                    setEmployees(newEmployees)
+                    // console.log(newEmployees);
+                }).catch((e) => {
+                    console.log(e);
+                setEmployees([
+                    emp1,
+                    emp2,
+                    emp3,
+                    emp4,
+                    emp5,
+                    emp6,
+                    emp7,
+                    emp8,
+                    emp9,
+                    emp10,
+                    emp11,
+                    emp12,
+                    emp13,
+                    emp14,
+                    emp15,
+                    emp16,
+                    emp17,
+                    guest,
+                ]);
+            })
+
     }, []);
 
     const onEmployeePressed = async (employee) => {
         const before = await getEmpBefore(employee.id);
+
+        if (employee.isGuest) {
+            navigation.navigate("UserMainInterface", {
+                user: employee,
+            });
+        }
 
         if (before === "x") {
             const after = await getEmpAfter(employee.id);

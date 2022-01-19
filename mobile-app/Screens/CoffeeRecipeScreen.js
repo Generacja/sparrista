@@ -84,7 +84,7 @@ export function CoffeeRecipeScreen({navigation, route}) {
                             padding: 30,
                             marginRight: 20
                         }}>
-                            <Text style={{fontSize: 34}}>
+                            <Text style={{fontSize: 30}}>
                                 {currentCoffee.coffeeDescription}
                             </Text>
                         </View>
@@ -97,18 +97,24 @@ export function CoffeeRecipeScreen({navigation, route}) {
                             padding: 30,
                             marginLeft: 20
                         }}>
-                            <Text style={{fontSize: 34}}>
+                            <Text style={{fontSize: 30}}>
                                 {currentCoffee.preparationDescription}
                             </Text>
                         </View>
                     </View>
                     <View style={{flex: 1}}>
                         <TouchableOpacity
-                            onPress={() =>
-                                navigation.navigate("AfterCoffeeScreen", {
-                                    user: currentUser,
-                                    coffee: currentCoffee,
-                                })
+                            onPress={() => {
+                                console.log(currentUser)
+                                currentUser.user && currentUser.user.isGuest ?
+                                    navigation.navigate("HomeScreen", {
+                                        user: currentUser,
+                                    }) :
+                                    navigation.navigate("AfterCoffeeScreen", {
+                                        user: currentUser,
+                                        coffee: currentCoffee,
+                                    })
+                                }
                             }
                         >
                             <ImageBackground

@@ -53,7 +53,7 @@ def invite_employees():
         sad_employee = Employee(sad_employee)
         happy_employee = Employee(happy_employee)
 
-        message = f'Hej {sad_employee.nick}!\nNie masz ochoty na odpoczynek?... 😊\nZrób sobie przerwę i wypij aromatyczną kawę z {happy_employee.nick}☕\nChwila przerwy dobrze wam zrobi!👌'
+        message = f'Hej {sad_employee.nick}!\nNie masz ochoty na odpoczynek?... 😊\nZrób sobie przerwę i wypij aromatyczną kawę z {happy_employee.nick} ☕\nChwila przerwy dobrze wam zrobi!👌'
 
         try:
             payload = {'content': message}
