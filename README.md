@@ -40,7 +40,6 @@ Mateusz Konofał
 Bartosz Ignasiak
 
 <b>System tester</b>:<br/>
-Polevara Veronika <br/>
 Wiktor Dudek
 
 <b>Implementator</b>:<br/>
@@ -48,5 +47,4 @@ Jędrzej Wasiniewski <br/>
 Juliusz Sadowski <br/>
 Alicja Szulecka <br/>
 Wojciech Matuszak <br/>
-Łukasz Kinder <br/>
 Marcin Marlewski
