@@ -71,9 +71,11 @@ export function UserMainInterface({ navigation, route }) {
                 <View
                     style={{
                         flex: 1.5,
-                        justifyContent: "center",
                         flexDirection: "row",
+                        justifyContent: "space-between",
+                        width: 150,
                         padding: 25,
+                        paddingLeft: 110
                     }}
                 >
                     <TouchableOpacity
@@ -105,33 +107,6 @@ export function UserMainInterface({ navigation, route }) {
                         >
                             <Text style={styles.interfaceIconsText}>
                                 RANKING
-                            </Text>
-                        </ImageBackground>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <ImageBackground
-                            source={require("../assets/Friends.png")}
-                            style={styles.interfaceIcons}
-                        >
-                            <Text style={styles.interfaceIconsText}>
-                                ZNAJOMI
-                            </Text>
-                        </ImageBackground>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <ImageBackground
-                            source={require("../assets/Statistics.png")}
-                            style={{
-                                height: 195,
-                                width: 223,
-                                resizeMode: "stretch",
-                                marginLeft: 28,
-                                marginRight: 28,
-                                alignItems: "center",
-                            }}
-                        >
-                            <Text style={styles.interfaceIconsText}>
-                                STATYSTYKI
                             </Text>
                         </ImageBackground>
                     </TouchableOpacity>

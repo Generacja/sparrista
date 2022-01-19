@@ -85,13 +85,13 @@ export function AfterCoffeeScreen({ navigation, route }) {
                             />
                         </TouchableOpacity>
                         <TouchableOpacity
-                            onPress={() => (
-                                secretClear(),
-                                setEmpAfter(currentUser.id, ""),
+                            onPress={() => {
+                                // secretClear();
+                                setEmpAfter(currentUser.id, "");
                                 navigation.navigate("HomeScreen", {
                                     user: currentUser,
                                 })
-                            )}
+                            }}
                         >
                             <Image
                                 style={{ height: 300, width: 300 }}
