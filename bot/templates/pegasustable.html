@@ -22,11 +22,11 @@
       $('#data').DataTable({
         ajax: '/api/data',
         columns: [
-          {data: 'author', searchable: false},
-          {data: 'nickname', searchable: false},
+          {data: 'author'},
+          {data: 'nickname'},
           {data: 'channel', searchable: false},
           {data: 'content', orderable: false},
-          {data: 'date', searchable: false}
+          {data: 'date', searchable: false, orderable: false}
         ],
       });
     });
