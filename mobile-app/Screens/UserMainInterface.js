@@ -37,35 +37,6 @@ export function UserMainInterface({ navigation, route }) {
                                 source={require("../assets/BackArrow.png")}
                             />
                         </TouchableOpacity>
-                        <View
-                            style={{
-                                flexDirection: "column",
-                                alignItems: "center",
-                            }}
-                        >
-                            <Image
-                                style={{
-                                    height: 80,
-                                    width: 90,
-                                    backgroundColor: "#9f6f4c",
-                                    borderTopLeftRadius: 5,
-                                    borderTopRightRadius: 5,
-                                }}
-                                source={{ uri: currentUser["avatarUrl"] }}
-                            />
-                            <View
-                                style={{
-                                    height: 5,
-                                    width: 90,
-                                    backgroundColor: "#212121",
-                                    borderBottomLeftRadius: 5,
-                                    borderBottomRightRadius: 5,
-                                }}
-                            />
-                            <Text style={{ fontWeight: "bold", fontSize: 19 }}>
-                                {currentUser["nickName"]}
-                            </Text>
-                        </View>
                     </View>
                 </View>
                 <View
@@ -75,7 +46,7 @@ export function UserMainInterface({ navigation, route }) {
                         justifyContent: "space-between",
                         width: 150,
                         padding: 25,
-                        paddingLeft: 110
+                        paddingLeft: 120
                     }}
                 >
                     <TouchableOpacity
@@ -86,12 +57,9 @@ export function UserMainInterface({ navigation, route }) {
                         }
                     >
                         <ImageBackground
-                            source={require("../assets/NewCoffee.png")}
-                            style={styles.interfaceIcons}
+                            source={require("../assets/NewCoffee2.png")}
+                            style={styles.interfaceIcons2}
                         >
-                            <Text style={styles.interfaceIconsText}>
-                                NOWA KAWA
-                            </Text>
                         </ImageBackground>
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -102,14 +70,42 @@ export function UserMainInterface({ navigation, route }) {
                         }
                     >
                         <ImageBackground
-                            source={require("../assets/Ranking.png")}
-                            style={styles.interfaceIcons}
+                            source={require("../assets/Ranking2.png")}
+                            style={styles.interfaceIcons2}
                         >
-                            <Text style={styles.interfaceIconsText}>
-                                RANKING
-                            </Text>
                         </ImageBackground>
                     </TouchableOpacity>
+                    <View
+                        style={{
+                            flexDirection: "column",
+                            alignItems: "center",
+                        }}
+                    >
+                        <Image
+                            style={{
+                                height: 185,
+                                width: 210,
+                                backgroundColor: "#9f6f4c",
+                                borderTopLeftRadius: 5,
+                                borderTopRightRadius: 5,
+                                marginLeft: 60,
+                            }}
+                            source={{ uri: currentUser["avatarUrl"] }}
+                        />
+                        <View
+                            style={{
+                                height: 10,
+                                width: 210,
+                                marginLeft: 60,
+                                backgroundColor: "#212121",
+                                borderBottomLeftRadius: 5,
+                                borderBottomRightRadius: 5,
+                            }}
+                        />
+                        <Text style={{ marginLeft: 60,fontWeight: "bold", fontSize: 20 }}>
+                            {currentUser["nickName"]}
+                        </Text>
+                    </View>
                 </View>
                 <View
                     style={{

@@ -105,7 +105,7 @@ export function HomeScreen({ navigation }) {
                     resizeMode={"stretch"}
                     style={styles.image}
                 >
-                    <View style={{ flex: 0.3 }} />
+                    <View style={{ flex: 0.5 }} />
                     <View style={styles.flexBox}>
                         <TouchableOpacity
                             style={styles.userBox}
@@ -118,7 +118,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[0]["nickName"]}
                                 </Text>
                             </View>
@@ -134,7 +134,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[1]["nickName"]}
                                 </Text>
                             </View>
@@ -150,7 +150,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[2]["nickName"]}
                                 </Text>
                             </View>
@@ -166,7 +166,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[3]["nickName"]}
                                 </Text>
                             </View>
@@ -182,7 +182,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[4]["nickName"]}
                                 </Text>
                             </View>
@@ -198,7 +198,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[5]["nickName"]}
                                 </Text>
                             </View>
@@ -216,7 +216,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[6]["nickName"]}
                                 </Text>
                             </View>
@@ -232,7 +232,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[7]["nickName"]}
                                 </Text>
                             </View>
@@ -248,7 +248,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[8]["nickName"]}
                                 </Text>
                             </View>
@@ -264,7 +264,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[9]["nickName"]}
                                 </Text>
                             </View>
@@ -280,7 +280,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[10]["nickName"]}
                                 </Text>
                             </View>
@@ -296,7 +296,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[11]["nickName"]}
                                 </Text>
                             </View>
@@ -314,7 +314,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[12]["nickName"]}
                                 </Text>
                             </View>
@@ -330,7 +330,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[13]["nickName"]}
                                 </Text>
                             </View>
@@ -346,7 +346,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[14]["nickName"]}
                                 </Text>
                             </View>
@@ -362,7 +362,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[15]["nickName"]}
                                 </Text>
                             </View>
@@ -378,7 +378,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {employees[16]["nickName"]}
                                 </Text>
                             </View>
@@ -399,7 +399,7 @@ export function HomeScreen({ navigation }) {
                                 />
                             </View>
                             <View style={styles.rectangle}>
-                                <Text style={styles.interfaceIconsText}>
+                                <Text style={styles.nicknameText}>
                                     {guest["nickName"]}
                                 </Text>
                             </View>
